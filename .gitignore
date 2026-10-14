@@ -1,0 +1,34 @@
+﻿# Python environment and caches
+.venv/
+__pycache__/
+*.py[cod]
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Personal data and local workspace
+data/
+workspace/
+
+# Downloaded AI models and archives
+models/
+*.onnx
+*.tar.bz2
+*.zip
+
+# Backups and local diagnostic scripts
+*.bak
+main.backup.py
+voice_test.py
+
+# Logs and generated audio
+*.log
+*.wav
+*.mp3
+*.flac
+
+# Test caches
+.pytest_cache/
+.coverage
