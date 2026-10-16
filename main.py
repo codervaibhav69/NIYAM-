@@ -530,6 +530,14 @@ def voice_chat_loop():
 
             print(f"You (voice): {user_text}")
 
+            # Every voice input must also cancel any unrelated pending clear confirmation.
+            memory_reply = handle_memory_command(user_text)
+            if memory_reply is not None:
+                print(f"\nNIYAM: {memory_reply}")
+                if SPEAK_RESPONSES:
+                    speak_text(memory_reply)
+                continue
+
             if any(
                 phrase in user_text.lower()
                 for phrase in stop_phrases
@@ -606,6 +614,14 @@ def main():
             break
 
         if not user_text:
+            continue
+
+        # Memory clear confirmation guard: route every keyboard input through the memory handler first.
+        memory_reply = handle_memory_command(user_text)
+        if memory_reply is not None:
+            print(f"\nNIYAM: {memory_reply}")
+            if SPEAK_RESPONSES:
+                speak_text(memory_reply)
             continue
 
         command = user_text.lower()

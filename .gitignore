@@ -32,3 +32,9 @@ voice_test.py
 # Test caches
 .pytest_cache/
 .coverage
+
+# Generated test reports
+test-reports/
+
+# One-time maintenance script
+fix_memory_confirmation_routing.ps1
